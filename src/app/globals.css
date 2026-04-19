@@ -299,7 +299,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__headline {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(64px, 16vw, 220px);
+  font-size: clamp(56px, 8vw, 110px);
   line-height: 1.1; color: var(--white);
   letter-spacing: -.03em;
   max-width: 100%; margin-bottom: clamp(16px, 2.5vw, 36px);
@@ -1198,7 +1198,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
    ════════════════════════════════════════════════════ */
 @media (min-width: 1440px) {
   :root { --max: 1280px; }
-  .hero__headline { font-size: clamp(80px, 14vw, 220px); }
+  .hero__headline { font-size: clamp(64px, 8vw, 110px); }
   .about__grid { gap: 96px; }
   .diff__grid { gap: 28px; }
   .methodology__domains { grid-template-columns: repeat(4, 1fr); gap: 1px; }
@@ -1259,7 +1259,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .hero { padding-top: 70px; }
   .hero__aside { display: none; }
   .hero__body { padding: 28px 0 48px; }
-  .hero__headline { font-size: clamp(64px, 16vw, 220px); }
+  .hero__headline { font-size: clamp(48px, 10vw, 110px); }
   .hero__desc { font-size: 15px; }
   .hero__actions { gap: 12px; }
   .btn-hero-primary { font-size: 13px; padding: 13px 24px; }
@@ -1298,7 +1298,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .hero { padding-top: 60px; }
   .hero-bg { background-position: right 30% !important; }
   .hero__desc { font-size: 13px; margin-bottom: 28px; line-height: 1.6; }
-  .hero__headline { font-size: clamp(48px, 12vw, 220px); line-height: 1.1; }
+  .hero__headline { font-size: clamp(40px, 10vw, 110px); line-height: 1.1; }
   .btn-hero-primary { width: 100%; justify-content: center; padding: 16px 20px; font-size: 15px; }
   .btn-hero-ghost { width: 100%; justify-content: center; padding: 16px 20px; font-size: 15px; }
 
