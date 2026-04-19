@@ -299,7 +299,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__headline {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(56px, 9vw, 128px);
+  font-size: clamp(56px, 12vw, 160px);
   line-height: 1.1; color: var(--white);
   letter-spacing: -.03em;
   max-width: 100%; margin-bottom: clamp(16px, 2.5vw, 36px);
