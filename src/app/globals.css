@@ -305,7 +305,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   max-width: 100%; margin-bottom: clamp(16px, 2.5vw, 36px);
 }
 .hero__headline em {
-  font-style: normal !important;
+  font-style: italic !important;
   font-weight: 300;
   color: var(--white);
 }
