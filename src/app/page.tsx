@@ -220,7 +220,7 @@ export default function Home() {
     <div className="wrap">
       <div className="hero__label">Internal Audit · Risk Advisory · Good Governance</div>
       <h1 className="hero__headline">
-        <em>Protecting <span className="hero__amp">&amp;</span> Enhancing</em> <strong>Shareholder value.</strong>
+        <em>Protecting <span className="hero__amp">&amp;</span> Enhancing</em><br/><strong>Shareholder value.</strong>
       </h1>
       <hr className="hero__rule" />
       <p className="hero__desc">
