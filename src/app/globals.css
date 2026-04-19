@@ -339,7 +339,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 
 .hero__desc {
-  font-size: 20px; color: rgba(255,255,255,.7);
+  font-size: 16px; color: rgba(255,255,255,.7);
   max-width: 620px; line-height: 1.85; margin-bottom: clamp(20px, 3vw, 40px);
 }
 
