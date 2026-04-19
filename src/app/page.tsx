@@ -163,9 +163,10 @@ export default function Home() {
 
   return (
     <>
-      <div 
-        className="cursor-glow" 
-        style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', opacity: cursorPos.x > -1000 ? 1 : 0 }} 
+      <a className="skip-link" href="#main">Skip to main content</a>
+      <div
+        className="cursor-glow"
+        style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', opacity: cursorPos.x > -1000 ? 1 : 0 }}
         aria-hidden="true"
       ></div>
       <div id="scroll-bar"></div>
@@ -193,7 +194,7 @@ export default function Home() {
     </div>
   </div>
 </nav>
-<main id="main">
+<main id="main" role="main">
 
 {/*  ════════════ HERO ════════════  */}
 <section className="hero" id="home">
@@ -416,6 +417,7 @@ export default function Home() {
 {/*  ════════════ FOUR PHASES ════════════  */}
 <section className="phases" id="phases">
   <div className="wrap">
+    <div className="section-label">Our Process</div>
     <div className="phases__top">
       <h2>Four phases of our work.</h2>
       <p>Before we audit, we learn. We spend more time in planning than most firms spend in execution — because the right question is worth more than the right checklist.</p>
@@ -667,7 +669,7 @@ export default function Home() {
           <div className="field-row">
             <div className="field">
               <label htmlFor="fn">First name</label>
-              <input type="text" id="fn" autoComplete="given-name" placeholder="Your first name" />
+              <input type="text" id="fn" autoComplete="given-name" placeholder="Your first name" required />
             </div>
             <div className="field">
               <label htmlFor="ln">Last name</label>
@@ -677,7 +679,7 @@ export default function Home() {
           <div className="field-row">
             <div className="field">
               <label htmlFor="em">Email</label>
-              <input type="email" id="em" autoComplete="email" placeholder="you@company.com" />
+              <input type="email" id="em" autoComplete="email" placeholder="you@company.com" required />
             </div>
             <div className="field">
               <label htmlFor="ph">Phone</label>
@@ -704,7 +706,7 @@ export default function Home() {
           </div>
           <div className="field">
             <label htmlFor="msg">Tell us more</label>
-            <textarea id="msg" placeholder="Size of your organisation, what challenges you're facing, what you're looking to achieve…"></textarea>
+            <textarea id="msg" placeholder="Size of your organisation, what challenges you're facing, what you're looking to achieve…" required></textarea>
           </div>
           <div className="form-foot">
             <button 
@@ -744,8 +746,10 @@ export default function Home() {
           <img src="logo.svg" alt="" className="footer__brand-logo" />
           <div className="footer__brand-name">
             AiR — Audit It Right
+            <small>Protecting Shareholder Value</small>
           </div>
         </div>
+        <p className="footer__tagline">Independent internal audit built around one purpose — protecting and enhancing long-term shareholder value.</p>
         <p className="footer__services-line">Internal Audit · Risk Advisory · Good Governance</p>
       </div>
       <div className="footer__col">
