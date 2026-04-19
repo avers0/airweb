@@ -290,7 +290,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .hero__label {
   font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: clamp(16px, 2.5vw, 32px);
+  color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: clamp(8px, 1.5vw, 24px);
   display: flex; align-items: center; gap: 12px;
 }
 .hero__label::before {
@@ -1326,7 +1326,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
    ════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
   .wrap { padding: 0 12px; }
-  .nav__name { display: none; }
+  .nav__name { font-size: 9px; letter-spacing: .08em; }
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
 
   /* Float CTA — icon-only circle on very small screens */
@@ -1535,7 +1535,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 @media (max-width: 480px) {
   .wrap { padding: 0 16px; }
-  .nav__name { display: none; }
+  .nav__name { font-size: 10px; letter-spacing: .1em; }
   .nav__brand { height: 44px; }
   .nav__logo--vertical { width: 42px !important; height: auto !important; }
 
