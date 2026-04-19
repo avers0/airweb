@@ -203,6 +203,7 @@ export default function Home() {
     <div className="hero-overlay"></div>
   </div>
   <div className="hero__top-line"></div>
+  <div className="hero__fx" aria-hidden={true}></div>
   {/*  Background watermark logos  */}
   <div className="hero__watermark hero__watermark--1" aria-hidden={true}>
     <img src="logo.svg" alt="" />
