@@ -299,7 +299,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__headline {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(36px, 4.2vw, 60px);
+  font-size: clamp(40px, 5.5vw, 76px);
   line-height: 1.15; color: var(--white);
   letter-spacing: -.02em;
   max-width: 900px; margin-bottom: clamp(16px, 2.5vw, 36px);
@@ -335,7 +335,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__rule {
   border: none; border-top: 2px solid rgba(255,255,255,.15);
-  margin-bottom: clamp(14px, 2vw, 32px); max-width: 600px;
+  margin-bottom: clamp(28px, 4vw, 56px); max-width: 600px;
 }
 
 .hero__desc {
