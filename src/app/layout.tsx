@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AiR: Audit It Right - Internal Audit, Risk Advisory, Good Governance",
   description: "Protecting Shareholder Value. Every organisation deserves an independent check on its strategy, operations, and financial matters. That is exactly what we do.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
