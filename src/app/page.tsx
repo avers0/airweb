@@ -300,7 +300,7 @@ export default function Home() {
       <div className="value-row">
         <div className="value-row__num">02</div>
         <div className="value-row__head">Human First</div>
-        <div className="value-row__body">We do not distinguish people between ethnicity, nationality, or background. Every person — junior or senior — deserves to be heard, earns equal respect, to be treated with dignity. No politics. No exceptions.</div>
+        <div className="value-row__body">Every person — junior or senior — deserves to be heard, respected, and treated with dignity.</div>
       </div>
 
       <div className="value-row">
@@ -318,7 +318,7 @@ export default function Home() {
       <div className="value-row">
         <div className="value-row__num">05</div>
         <div className="value-row__head">Enjoy the Journey</div>
-        <div className="value-row__body">We enjoy the work. We enjoy the problems. We enjoy the people. We believe that we don't have to make our work serious but fun to bring the best value to the table.</div>
+        <div className="value-row__body">We believe work doesn't have to be serious to be exceptional — rigour and enjoyment are not mutually exclusive.</div>
       </div>
 
     </div>
@@ -339,7 +339,7 @@ export default function Home() {
       <div className="diff__card">
         <div className="diff__card-num">01</div>
         <h3 className="diff__card-title">Our Approach</h3>
-        <p>We are obsessed with protecting and Enhancing Shareholder Value.<br/><br/>Everything we do — every audit, every finding, every recommendation — is anchored to this single purpose. That obsession shapes how we think, what we look for, and what we tell you. We do not audit to comply. We audit to improve.</p>
+        <p>We are obsessed with protecting and enhancing Shareholder Value.<br/><br/>Everything we do — every audit, every finding, every recommendation — is anchored to this single purpose. That obsession shapes how we think, what we look for, and what we tell you. We do not audit to comply. We audit to improve.</p>
       </div>
 
       <div className="diff__card">
