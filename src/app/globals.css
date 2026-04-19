@@ -335,12 +335,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__rule {
   border: none; border-top: 2px solid rgba(255,255,255,.15);
-  margin-bottom: clamp(40px, 6vw, 80px); max-width: 600px;
+  margin-bottom: clamp(56px, 8vw, 120px); max-width: 600px;
 }
 
 .hero__desc {
-  font-size: 17px; color: rgba(255,255,255,.7);
-  max-width: 580px; line-height: 1.85; margin-bottom: clamp(20px, 3vw, 40px);
+  font-size: 14px; color: rgba(255,255,255,.7);
+  max-width: 520px; line-height: 1.85; margin-bottom: clamp(20px, 3vw, 40px);
 }
 
 .hero__actions {
