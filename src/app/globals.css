@@ -335,7 +335,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__rule {
   border: none; border-top: 2px solid rgba(255,255,255,.15);
-  margin-bottom: clamp(56px, 8vw, 120px); max-width: 600px;
+  margin-bottom: clamp(16px, 2vw, 32px); max-width: 600px;
 }
 
 .hero__desc {
