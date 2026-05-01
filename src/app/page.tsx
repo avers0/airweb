@@ -296,7 +296,7 @@ export default function Home() {
       <div className="value-row">
         <div className="value-row__num">01</div>
         <div className="value-row__head">Think Like Owners</div>
-        <div className="value-row__body">We develop deep understanding of the client's business — why it exists, how it makes money, its unit economics, capital structure, brand, customer voice, and competitive dynamics. Every finding connects back to one question: does this protect or improve long-term shareholder value? That is our only measure of success.</div>
+        <div className="value-row__body">We develop deep understanding of the client's business — why it exists, how it makes money, its unit economics, capital structure, brand, customer voice, and competitive dynamics.</div>
       </div>
 
       <div className="value-row">
@@ -308,13 +308,13 @@ export default function Home() {
       <div className="value-row">
         <div className="value-row__num">03</div>
         <div className="value-row__head">Eagle Eye</div>
-        <div className="value-row__body">Intellectually curious and sharp observational skills. We ask why. Why is it done this way? What can be improved — made faster, better, more efficient? We believe learning never ends. The world changes — AI, ESG, geopolitics, new business models. We stay relevant by constantly investing in staying ahead.</div>
+        <div className="value-row__body">Intellectually curious and sharp observational skills. We ask why. Why is it done this way? What can be improved — made faster, better, more efficient? We believe learning never ends.</div>
       </div>
 
       <div className="value-row">
         <div className="value-row__num">04</div>
         <div className="value-row__head">Speak Your Mind Clearly</div>
-        <div className="value-row__body">We form our views and hold them. Our advice is honest — even when uncomfortable — and never shaped by pressure, relationships, or hidden agenda. We do what is right, not what is easy. We write for the decision-maker, not for the file. Clear, precise, and actionable. If a board member cannot understand our recommendation in sixty seconds — we have failed.</div>
+        <div className="value-row__body">We form our views and hold them. Our advice is honest — even when uncomfortable — and never shaped by pressure, relationships, or hidden agenda. If a board member cannot understand our recommendation in sixty seconds — we have failed.</div>
       </div>
 
       <div className="value-row">
