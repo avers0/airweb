@@ -1239,7 +1239,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
    ════════════════════════════════════════════════════ */
 @media (min-width: 1440px) {
   :root { --max: 1280px; }
-  .hero__headline { font-size: clamp(58px, 7vw, 100px); }
+  .hero__headline { font-size: clamp(54px, 6.5vw, 93px); }
   .about__grid { gap: 96px; }
   .diff__grid { gap: 28px; }
   .methodology__domains { grid-template-columns: repeat(4, 1fr); gap: 1px; }
