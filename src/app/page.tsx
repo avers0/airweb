@@ -560,6 +560,23 @@ export default function Home() {
     {/*  Partners  */}
     <div className="team__roster team__roster--partners">
       <div className="team__person">
+        <img src="team-manjula.jpg" alt="Manjula Nair" className="team__photo" />
+        <div className="team__pname">Manjula Nair</div>
+        <div className="team__prole">Partner</div>
+        <p className="team__pbio">Marketing and strategy leader who began her career with Ogilvy &amp; Mather. Specialises in corporate sales strategy and marketing plans — aligning them with business goals to drive measurable results.</p>
+      </div>
+
+      <div className="team__person">
+        <img src="team-anand.jpg" alt="Anandkumar" className="team__photo" />
+        <div className="team__pname">Anandkumar</div>
+        <div className="team__prole">Partner</div>
+        <p className="team__pbio">CVA (USA) and FCA (India) with 20+ years across business valuation, M&amp;A advisory, and corporate structuring. Has advised 1,000+ companies on valuation, fundraising, acquisitions, and exits across UAE, India, and Africa.</p>
+      </div>
+    </div>
+
+    {/*  Team  */}
+    <div className="team__roster team__roster--small">
+      <div className="team__person">
         <img src="team-aman.jpg" alt="Aman Kabra" className="team__photo" />
         <div className="team__pname">Aman Kabra</div>
         <p className="team__pbio">Fifteen years of experience across internal audit and risk advisory. Deep expertise in enterprise risk, operational audits, and regulatory compliance frameworks.</p>
@@ -577,23 +594,6 @@ export default function Home() {
         <p className="team__pbio">Extensive experience across enterprise risk, internal controls, and governance frameworks. Brings cross-industry insight and senior-level advisory expertise to every engagement.</p>
       </div>
 
-      <div className="team__person">
-        <img src="team-manjula.jpg" alt="Manjula Nair" className="team__photo" />
-        <div className="team__pname">Manjula Nair</div>
-        <div className="team__prole">Partner</div>
-        <p className="team__pbio">Marketing and strategy leader who began her career with Ogilvy &amp; Mather. Specialises in corporate sales strategy and marketing plans — aligning them with business goals to drive measurable results.</p>
-      </div>
-
-      <div className="team__person">
-        <img src="team-anand.jpg" alt="Anandkumar" className="team__photo" />
-        <div className="team__pname">Anandkumar</div>
-        <div className="team__prole">Partner</div>
-        <p className="team__pbio">CVA (USA) and FCA (India) with 20+ years across business valuation, M&amp;A advisory, and corporate structuring. Has advised 1,000+ companies on valuation, fundraising, acquisitions, and exits across UAE, India, and Africa.</p>
-      </div>
-    </div>
-
-    {/*  Team  */}
-    <div className="team__roster team__roster--small">
       <div className="team__person">
         <img src="team-kanish.jpg" alt="Kanish Kabra" className="team__photo" />
         <div className="team__pname">Kanish Kabra</div>
