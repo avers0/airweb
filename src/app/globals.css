@@ -888,29 +888,59 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .team__intro-text p:last-child { margin-bottom: 0; }
 .team__intro-text strong { color: var(--navy); }
 
-/* Team roster */
+/* Team roster — base */
 .team__roster {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  display: grid;
   gap: 20px;
 }
-.team__roster + .team__roster { margin-top: 24px; }
+.team__roster + .team__roster { margin-top: 48px; }
+
+/* Partner cards — large, centered, premium */
 .team__roster--partners {
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  max-width: 760px;
+  gap: 28px;
+  max-width: 740px;
 }
-.team__roster--partners .team__person { padding: 48px 40px; text-align: center; }
-.team__roster--partners .team__photo { width: 180px; height: 180px; margin-left: auto; margin-right: auto; }
-.team__roster--partners .team__pname { font-size: 22px; }
-.team__roster--partners .team__prole { font-size: 12px; }
+.team__roster--partners .team__person {
+  padding: 52px 40px 44px;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--red);
+  box-shadow: 0 4px 20px rgba(27,42,74,.06);
+}
+.team__roster--partners .team__person:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 56px rgba(27,42,74,.11);
+}
+.team__roster--partners .team__photo {
+  width: 160px; height: 160px;
+  margin-left: auto; margin-right: auto; margin-bottom: 24px;
+  border: 4px solid var(--rule);
+}
+.team__roster--partners .team__person:hover .team__photo { border-color: var(--red); }
+.team__roster--partners .team__pname { font-size: 22px; margin-bottom: 6px; }
+.team__roster--partners .team__prole { font-size: 11px; letter-spacing: .13em; margin-bottom: 20px; }
+.team__roster--partners .team__pbio {
+  font-size: 14px; line-height: 1.75;
+  max-width: 280px; margin-left: auto; margin-right: auto;
+}
+
+/* Small cards — compact, auto-fill grid */
 .team__roster--small {
-  grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: 18px;
 }
-.team__roster--small .team__person { padding: 24px 20px; }
-.team__roster--small .team__photo { width: 80px; height: 80px; margin-bottom: 14px; }
-.team__roster--small .team__pname { font-size: 15px; }
-.team__roster--small .team__prole { margin-bottom: 10px; }
+.team__roster--small .team__person {
+  background: var(--off-white); padding: 28px 24px;
+  border-radius: 8px;
+}
+.team__roster--small .team__photo { width: 88px; height: 88px; margin-bottom: 16px; }
+.team__roster--small .team__pname { font-size: 16px; }
+.team__roster--small .team__prole { font-size: 10px; margin-bottom: 12px; }
+.team__roster--small .team__pbio { font-size: 12.5px; line-height: 1.65; }
+
+/* Shared card base */
 .team__person {
   background: var(--off-white); padding: 36px 28px;
   border-radius: 8px;
@@ -928,9 +958,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border: 3px solid var(--rule);
   transition: border-color var(--ease);
 }
-.team__person:hover .team__photo {
-  border-color: var(--red);
-}
+.team__person:hover .team__photo { border-color: var(--red); }
 .team__pname {
   font-family: var(--serif); font-size: 18px; font-weight: 700;
   color: var(--navy); margin-bottom: 4px;
@@ -940,9 +968,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   letter-spacing: .1em; text-transform: uppercase;
   margin-bottom: 16px;
 }
-.team__pbio {
-  font-size: 13px; color: var(--muted); line-height: 1.7;
-}
+.team__pbio { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
 
 /* ════════════════════════════════════════════════════
@@ -1275,7 +1301,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
    ════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .value-row { grid-template-columns: 40px clamp(120px, 16vw, 180px) 1fr; }
-  .team__roster { grid-template-columns: repeat(2, 1fr); }
+  .team__roster--small { grid-template-columns: repeat(2, 1fr); }
   .founder-card { grid-template-columns: 1fr; gap: 28px; }
   .founder-card__photo { max-width: 200px; aspect-ratio: 1; border-radius: 8px; }
   .career__layout { grid-template-columns: 1fr; gap: 40px; }
@@ -1296,7 +1322,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .career__layout { grid-template-columns: 1fr; gap: 48px; }
   .contact__inner { grid-template-columns: 1fr; }
   .contact__left { border-right: none; border-bottom: 1px solid var(--rule); }
-  .team__roster { grid-template-columns: repeat(2, 1fr); }
+  .team__roster--small { grid-template-columns: repeat(2, 1fr); }
   .footer__top { grid-template-columns: 1fr 1fr; }
   .specialism { grid-template-columns: 1fr; gap: 6px; }
 }
@@ -1329,7 +1355,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .value-row__body { grid-column: 2; }
   .methodology__domains { grid-template-columns: 1fr 1fr; }
   .offering-block { padding: 24px 20px; }
-  .team__roster { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .team__roster--partners { grid-template-columns: 1fr; max-width: 420px; }
+  .team__roster--partners .team__photo { width: 130px; height: 130px; }
+  .team__roster--partners .team__person { padding: 40px 32px; }
+  .team__roster--small { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .founder-card { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
   .founder-card__photo { max-width: 180px; aspect-ratio: 1; border-radius: 50%; }
   .field-row { grid-template-columns: 1fr; }
@@ -1370,11 +1399,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .phase-card__title { font-size: 20px; }
   .offering-block { padding: 20px 16px; }
   .offering-block__tag { padding-left: 0; }
-  .team__person { padding: 20px 16px; }
-  .team__photo { width: 90px; height: 90px; }
   .team__roster--partners { grid-template-columns: 1fr; max-width: 100%; }
-  .team__roster--partners .team__photo { width: 140px; height: 140px; }
-  .team__roster--partners .team__person { padding: 36px 28px; }
+  .team__roster--partners .team__photo { width: 120px; height: 120px; }
+  .team__roster--partners .team__person { padding: 32px 24px; }
+  .team__roster--small { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .team__roster--small .team__person { padding: 20px 16px; }
+  .team__roster--small .team__photo { width: 70px; height: 70px; }
   .founder-card__name { font-size: 24px; }
   .founder-card__photo { max-width: 120px; }
   .contact__headline { font-size: clamp(20px, 5vw, 28px); }
