@@ -562,21 +562,18 @@ export default function Home() {
       <div className="team__person">
         <img src="team-aman.jpg" alt="Aman Kabra" className="team__photo" />
         <div className="team__pname">Aman Kabra</div>
-        <div className="team__prole">Partner</div>
         <p className="team__pbio">Fifteen years of experience across internal audit and risk advisory. Deep expertise in enterprise risk, operational audits, and regulatory compliance frameworks.</p>
       </div>
 
       <div className="team__person">
         <img src="team-monika.jpg" alt="Monika Gupta" className="team__photo" />
         <div className="team__pname">Monika Gupta</div>
-        <div className="team__prole">Partner</div>
         <p className="team__pbio">Seventeen years across financial assurance, SOX compliance, and internal controls. Has led ICFR reviews for listed companies and advised Audit Committees directly.</p>
       </div>
 
       <div className="team__person">
         <img src="team-ramji.jpg" alt="Ramji Subramanian" className="team__photo" />
         <div className="team__pname">Ramji Subramanian</div>
-        <div className="team__prole">Partner</div>
         <p className="team__pbio">Extensive experience across enterprise risk, internal controls, and governance frameworks. Brings cross-industry insight and senior-level advisory expertise to every engagement.</p>
       </div>
 
