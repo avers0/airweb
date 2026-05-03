@@ -557,8 +557,8 @@ export default function Home() {
       <p><strong>Every engagement is partner-led. The experience you are promised is the experience you receive.</strong></p>
     </div>
 
-    {/*  Team roster  */}
-    <div className="team__roster">
+    {/*  Partners  */}
+    <div className="team__roster team__roster--partners">
       <div className="team__person">
         <img src="team-aman.jpg" alt="Aman Kabra" className="team__photo" />
         <div className="team__pname">Aman Kabra</div>
@@ -571,13 +571,6 @@ export default function Home() {
         <div className="team__pname">Monika Gupta</div>
         <div className="team__prole">Partner</div>
         <p className="team__pbio">Seventeen years across financial assurance, SOX compliance, and internal controls. Has led ICFR reviews for listed companies and advised Audit Committees directly.</p>
-      </div>
-
-      <div className="team__person">
-        <img src="team-kanish.jpg" alt="Kanish Kabra" className="team__photo" />
-        <div className="team__pname">Kanish Kabra</div>
-        <div className="team__prole">Senior Manager</div>
-        <p className="team__pbio">Specialist in technology audits, cyber risk, and AI governance. Brings deep domain knowledge across IT general controls and digital risk posture reviews.</p>
       </div>
 
       <div className="team__person">
@@ -599,6 +592,16 @@ export default function Home() {
         <div className="team__pname">Anandkumar</div>
         <div className="team__prole">Partner</div>
         <p className="team__pbio">CVA (USA) and FCA (India) with 20+ years across business valuation, M&amp;A advisory, and corporate structuring. Has advised 1,000+ companies on valuation, fundraising, acquisitions, and exits across UAE, India, and Africa.</p>
+      </div>
+    </div>
+
+    {/*  Team  */}
+    <div className="team__roster team__roster--small">
+      <div className="team__person">
+        <img src="team-kanish.jpg" alt="Kanish Kabra" className="team__photo" />
+        <div className="team__pname">Kanish Kabra</div>
+        <div className="team__prole">Senior Manager</div>
+        <p className="team__pbio">Specialist in technology audits, cyber risk, and AI governance. Brings deep domain knowledge across IT general controls and digital risk posture reviews.</p>
       </div>
 
       <div className="team__person">

@@ -893,6 +893,22 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 20px;
 }
+.team__roster + .team__roster { margin-top: 24px; }
+.team__roster--partners {
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 24px;
+}
+.team__roster--partners .team__person { padding: 40px 32px; }
+.team__roster--partners .team__photo { width: 140px; height: 140px; }
+.team__roster--partners .team__pname { font-size: 20px; }
+.team__roster--small {
+  grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr));
+  gap: 16px;
+}
+.team__roster--small .team__person { padding: 24px 20px; }
+.team__roster--small .team__photo { width: 80px; height: 80px; margin-bottom: 14px; }
+.team__roster--small .team__pname { font-size: 15px; }
+.team__roster--small .team__prole { margin-bottom: 10px; }
 .team__person {
   background: var(--off-white); padding: 36px 28px;
   border-radius: 8px;
