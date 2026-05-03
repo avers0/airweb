@@ -907,7 +907,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   text-align: center;
   background: var(--white);
   border: 1px solid var(--rule);
-  border-top: 3px solid var(--red);
   box-shadow: 0 4px 20px rgba(27,42,74,.06);
 }
 .team__roster--partners .team__person:hover {
