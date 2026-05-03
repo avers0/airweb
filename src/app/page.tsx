@@ -551,12 +551,6 @@ export default function Home() {
       </div>
     </div>
 
-    {/*  Team intro  */}
-    <div className="team__intro-text">
-      <p>AiR is led and delivered by a senior team of internal audit professionals with combined experience spanning decades across industries, geographies, and business types — from fast-growing startups to listed multinationals.</p>
-      <p><strong>Every engagement is partner-led. The experience you are promised is the experience you receive.</strong></p>
-    </div>
-
     {/*  Partners  */}
     <div className="team__roster team__roster--partners">
       <div className="team__person">
@@ -606,6 +600,12 @@ export default function Home() {
         <div className="team__pname">Ajeet Verma</div>
         <div className="team__prole">Analyst</div>
       </div>
+    </div>
+
+    {/*  Team intro  */}
+    <div className="team__intro-text">
+      <p>AiR is led and delivered by a senior team of internal audit professionals with combined experience spanning decades across industries, geographies, and business types — from fast-growing startups to listed multinationals.</p>
+      <p><strong>Every engagement is partner-led. The experience you are promised is the experience you receive.</strong></p>
     </div>
 
   </div>
