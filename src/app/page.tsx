@@ -605,7 +605,6 @@ export default function Home() {
         <img src="team-ajeet.jpg" alt="Ajeet Verma" className="team__photo" />
         <div className="team__pname">Ajeet Verma</div>
         <div className="team__prole">Analyst</div>
-        <p className="team__pbio"></p>
       </div>
     </div>
 
