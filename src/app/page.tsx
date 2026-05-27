@@ -6,18 +6,38 @@ import React, { useEffect, useState } from 'react';
 export default function Home() {
   const [navOn, setNavOn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [consentChecked, setConsentChecked] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
 
   const toggleNav = () => setMenuOpen(!menuOpen);
   const closeNav = () => setMenuOpen(false);
   
-  const submitForm = (e: React.FormEvent) => {
+  // Replace REPLACE_WITH_FORMSPREE_ID with your Formspree form ID
+  // Sign up at formspree.io → New Form → copy the ID from the endpoint URL
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID';
+
+  const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => {
-      setFormStatus('sent');
-    }, 800);
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setFormStatus('sent');
+        form.reset();
+        setConsentChecked(false);
+      } else {
+        setFormStatus('error');
+      }
+    } catch {
+      setFormStatus('error');
+    }
   };
 
   useEffect(() => {
@@ -186,8 +206,8 @@ export default function Home() {
         <li><a href="#team" onClick={closeNav}>Team</a></li>
         <li><a href="#career" onClick={closeNav}>Career</a></li>
         <li><a href="#contact" onClick={closeNav}>Contact</a></li>
+        <li className="nav__cta-item"><a href="#contact" className="nav__cta" onClick={closeNav}>Start a conversation</a></li>
       </ul>
-<a href="#contact" className="nav__cta" onClick={closeNav}>Start a conversation</a>
       <button className={`nav__burger ${menuOpen ? 'open' : ''}`} onClick={toggleNav} aria-expanded={menuOpen} aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -347,7 +367,7 @@ export default function Home() {
       <div className="diff__card">
         <div className="diff__card-num">02</div>
         <h3 className="diff__card-title">Operational Experience</h3>
-        <p>We bring operational experience to our work. Our team has seen the business first hand — from the shop floor to the boardroom. We have lived inside the industries we audit — FMCG, automotive, telecommunications, pharmaceuticals, oil and gas, manufacturing, financial services, and more. We do not arrive to learn your business. We arrive already knowing it.</p>
+        <p>We bring operational experience to our work. Our team has seen the business first hand — from the shop floor to the boardroom. We have lived inside the industries we audit — FMCG, automotive, telecommunications, pharmaceuticals, oil and gas, manufacturing, financial services, and more. We invest significant time understanding your business before any engagement begins — so we arrive prepared.</p>
       </div>
 
       <div className="diff__card">
@@ -531,7 +551,7 @@ export default function Home() {
   <div className="wrap">
     <div className="section-label">Our Team</div>
     <div className="team__head">
-      <h2>AiR is built on one founding principle — <br/>that the people who do the work must be <br/>the best in the room. Every time.</h2>
+      <h2>AiR is built on one founding principle — <br/>that every engagement must be led by <br/>senior professionals with real-world experience. Every time.</h2>
     </div>
 
     {/*  Founder  */}
@@ -664,16 +684,16 @@ export default function Home() {
       <div className="contact__left">
         <div>
           <h3>Start a Conversation</h3>
-          <p>Whether you have a specific requirement in mind or simply want to explore how AiR can add value to your business — reach out. No obligation. No sales pitch. Just an honest conversation.</p>
+          <p>Whether you have a specific requirement in mind or simply want to explore how AiR can add value to your business — reach out. We will respond with a straightforward conversation about your requirements.</p>
         </div>
         <div className="contact__details">
           <div className="contact__detail">
             <div className="contact__dl">Email</div>
-            <div className="contact__dv">hello@auditright.com<small>We reply within 24 hours</small></div>
+            <div className="contact__dv">hello@audititright.com<small>We reply within 24 hours</small></div>
           </div>
           <div className="contact__detail">
             <div className="contact__dl">Website</div>
-            <div className="contact__dv">www.auditright.com</div>
+            <div className="contact__dv">www.audititright.com</div>
           </div>
           <div className="contact__detail">
             <div className="contact__dl">Presence</div>
@@ -689,30 +709,30 @@ export default function Home() {
           <div className="field-row">
             <div className="field">
               <label htmlFor="fn">First name</label>
-              <input type="text" id="fn" autoComplete="given-name" placeholder="Your first name" required />
+              <input type="text" id="fn" name="first_name" autoComplete="given-name" placeholder="Your first name" required />
             </div>
             <div className="field">
               <label htmlFor="ln">Last name</label>
-              <input type="text" id="ln" autoComplete="family-name" placeholder="Your last name" />
+              <input type="text" id="ln" name="last_name" autoComplete="family-name" placeholder="Your last name" />
             </div>
           </div>
           <div className="field-row">
             <div className="field">
               <label htmlFor="em">Email</label>
-              <input type="email" id="em" autoComplete="email" placeholder="you@company.com" required />
+              <input type="email" id="em" name="email" autoComplete="email" placeholder="you@company.com" required />
             </div>
             <div className="field">
               <label htmlFor="ph">Phone</label>
-              <input type="tel" id="ph" autoComplete="tel" placeholder="+91 98765 43210" />
+              <input type="tel" id="ph" name="phone" autoComplete="tel" placeholder="+91 98765 43210" />
             </div>
           </div>
           <div className="field">
             <label htmlFor="co">Company</label>
-            <input type="text" id="co" autoComplete="organization" placeholder="Your company name" />
+            <input type="text" id="co" name="company" autoComplete="organization" placeholder="Your company name" />
           </div>
           <div className="field">
             <label htmlFor="svc">What do you need?</label>
-            <select id="svc" defaultValue="">
+            <select id="svc" name="service" defaultValue="">
               <option value="" disabled>Pick the closest match</option>
               <option>Full Scope Internal Audit</option>
               <option>Co-sourcing &amp; Staff Augmentation</option>
@@ -726,14 +746,26 @@ export default function Home() {
           </div>
           <div className="field">
             <label htmlFor="msg">Tell us more</label>
-            <textarea id="msg" placeholder="Size of your organisation, what challenges you're facing, what you're looking to achieve…" required></textarea>
+            <textarea id="msg" name="message" placeholder="Size of your organisation, what challenges you're facing, what you're looking to achieve…" required></textarea>
+          </div>
+          <div className="field field--consent">
+            <label className="consent-label">
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                checked={consentChecked}
+                onChange={e => setConsentChecked(e.target.checked)}
+              />
+              <span>I agree to the <a href="/privacy">Privacy Policy</a>. My information will only be used to respond to my enquiry and will not be shared with third parties.</span>
+            </label>
           </div>
           <div className="form-foot">
-            <button 
-              type="submit" 
-              className="submit-btn" 
-              id="submit-btn" 
-              disabled={formStatus !== 'idle'}
+            <button
+              type="submit"
+              className="submit-btn"
+              id="submit-btn"
+              disabled={formStatus === 'sending' || formStatus === 'sent'}
               style={formStatus === 'sent' ? { background: '#1B2A4A', color: '#FFFFFF', borderColor: '#1B2A4A' } : undefined}
             >
               {formStatus === 'idle' && (
@@ -744,9 +776,13 @@ export default function Home() {
               )}
               {formStatus === 'sending' && 'Sending...'}
               {formStatus === 'sent' && 'Message sent ✓'}
+              {formStatus === 'error' && 'Failed — try again'}
             </button>
             <span className="form-note">Never shared. Never sold.</span>
           </div>
+          {formStatus === 'error' && (
+            <p className="form-error">Something went wrong. Email us directly at <a href="mailto:hello@audititright.com">hello@audititright.com</a></p>
+          )}
         </form>
       </div>
     </div>
@@ -794,24 +830,28 @@ export default function Home() {
       <div className="footer__col">
         <h4>Get In Touch</h4>
         <ul>
-          <li><a href="mailto:hello@auditright.com">hello@auditright.com</a></li>
-          <li><a href="https://www.auditright.com" target="_blank">www.auditright.com</a></li>
-          <li><a href="#contact">India | Europe | Global</a></li>
+          <li><a href="mailto:hello@audititright.com">hello@audititright.com</a></li>
+          <li><a href="https://www.audititright.com" target="_blank">www.audititright.com</a></li>
+          <li><span style={{color:'var(--muted)', fontSize:'13px'}}>India | Europe | Global</span></li>
+          <li style={{marginTop:'12px', color:'var(--muted)', fontSize:'12px', lineHeight:'1.6'}}>
+            [REGISTERED OFFICE ADDRESS]<br/>
+            India
+          </li>
         </ul>
       </div>
     </div>
     <div className="footer__bottom">
       <p className="footer__copy">© 2026 AiR — Audit It Right. Internal Audit. All rights reserved.</p>
       <nav className="footer__legal">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Disclaimer</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/disclaimer">Disclaimer</a>
       </nav>
     </div>
   </div>
 </footer>
 <div className="float-cta" id="float-cta">
-  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/917620813847" target="_blank" rel="noopener noreferrer">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     <span className="float-cta__label">Chat on WhatsApp</span>
   </a>
