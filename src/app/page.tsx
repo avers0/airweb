@@ -68,6 +68,10 @@ export default function Home() {
       const hero = document.querySelector('.hero') as HTMLElement;
       const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
       if (fc) fc.classList.toggle('show', window.scrollY > heroBottom - 100);
+
+      // Back-to-top — show after deep scroll
+      const btt = document.querySelector('.back-to-top');
+      if (btt) btt.classList.toggle('show', window.scrollY > window.innerHeight * 1.5);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -81,6 +85,7 @@ export default function Home() {
     // Scroll reveal
     const srAllSelector = '.sr, .sr-left, .sr-right, .sr-scale';
     const srGroups = [
+      { sel: '.stats__item',             cls: 'sr',       stagger: 90  },
       { sel: '.about .section-label',    cls: 'sr'       },
       { sel: '.about__title',            cls: 'sr'       },
       { sel: '.about__prose',            cls: 'sr-left'  },
@@ -91,6 +96,8 @@ export default function Home() {
       { sel: '.diff .section-label',     cls: 'sr'       },
       { sel: '.diff__top h2',            cls: 'sr'       },
       { sel: '.diff__card',              cls: 'sr-scale', stagger: 100 },
+      { sel: '.industries__label',       cls: 'sr'       },
+      { sel: '.industries__chip',        cls: 'sr',       stagger: 45  },
       { sel: '.methodology .section-label', cls: 'sr'    },
       { sel: '.methodology__title',      cls: 'sr'       },
       { sel: '.methodology__domain',     cls: 'sr',       stagger: 60  },
@@ -101,6 +108,10 @@ export default function Home() {
       { sel: '.offerings .section-label', cls: 'sr'      },
       { sel: '.offerings__title',        cls: 'sr'       },
       { sel: '.offering-block',          cls: 'sr',       stagger: 100 },
+      { sel: '.manifesto__line',         cls: 'sr-scale' },
+      { sel: '.faq .section-label',      cls: 'sr'       },
+      { sel: '.faq__title',              cls: 'sr'       },
+      { sel: '.faq__item',               cls: 'sr',       stagger: 60  },
       { sel: '.team .section-label',     cls: 'sr'       },
       { sel: '.team__head h2',           cls: 'sr'       },
       { sel: '.founder-card',            cls: 'sr-scale' },
@@ -160,6 +171,32 @@ export default function Home() {
         });
       }, { threshold: 0.08 });
       fIo.observe(form);
+    }
+
+    // Stat count-up — numerals rise from zero when the bar enters view
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const statNums = document.querySelectorAll('.stats__num[data-target]');
+    if (statNums.length) {
+      const animateCount = (el: HTMLElement) => {
+        const target = parseFloat(el.dataset.target || '0');
+        const suffix = el.dataset.suffix || '';
+        if (reduceMotion) { el.textContent = target.toLocaleString('en-IN') + suffix; return; }
+        const dur = 1600;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 4);
+          el.textContent = Math.round(target * eased).toLocaleString('en-IN') + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const statIo = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { animateCount(e.target as HTMLElement); statIo.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      statNums.forEach(el => statIo.observe(el));
     }
 
     // Hero Word Rise
@@ -257,6 +294,34 @@ export default function Home() {
           Learn more about AiR
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
         </a>
+      </div>
+    </div>
+  </div>
+  <a href="#about" className="hero__scroll" aria-label="Scroll to learn more">
+    <span className="hero__scroll-line" aria-hidden="true"></span>
+    <span className="hero__scroll-text">Scroll</span>
+  </a>
+</section>
+
+{/*  ════════════ CREDENTIALS BAR ════════════  */}
+<section className="stats" aria-label="AiR at a glance">
+  <div className="wrap">
+    <div className="stats__grid">
+      <div className="stats__item">
+        <div className="stats__num" data-target="25" data-suffix="+">0</div>
+        <div className="stats__label">Years of leadership experience behind every engagement</div>
+      </div>
+      <div className="stats__item">
+        <div className="stats__num" data-target="1000" data-suffix="+">0</div>
+        <div className="stats__label">Companies advised across India, UAE, Europe &amp; Africa</div>
+      </div>
+      <div className="stats__item">
+        <div className="stats__num" data-target="8" data-suffix="">0</div>
+        <div className="stats__label">Value domains audited — from strategy to governance</div>
+      </div>
+      <div className="stats__item">
+        <div className="stats__num" data-target="100" data-suffix="%">0</div>
+        <div className="stats__label">Partner-led engagements. No exceptions. Every time.</div>
       </div>
     </div>
   </div>
@@ -358,30 +423,42 @@ export default function Home() {
     </div>
     <div className="diff__grid">
 
-      <div className="diff__card">
+      <div className="diff__card" data-ghost="01">
         <div className="diff__card-num">01</div>
         <h3 className="diff__card-title">Our Approach</h3>
         <p>We are obsessed with protecting and enhancing Shareholder Value.<br/><br/>Everything we do — every audit, every finding, every recommendation — is anchored to this single purpose. That obsession shapes how we think, what we look for, and what we tell you. We do not audit to comply. We audit to improve.</p>
       </div>
 
-      <div className="diff__card">
+      <div className="diff__card" data-ghost="02">
         <div className="diff__card-num">02</div>
         <h3 className="diff__card-title">Operational Experience</h3>
         <p>We bring operational experience to our work. Our team has seen the business first hand — from the shop floor to the boardroom. We have lived inside the industries we audit — FMCG, automotive, telecommunications, pharmaceuticals, oil and gas, manufacturing, financial services, and more. We invest significant time understanding your business before any engagement begins — so we arrive prepared.</p>
       </div>
 
-      <div className="diff__card">
+      <div className="diff__card" data-ghost="03">
         <div className="diff__card-num">03</div>
         <h3 className="diff__card-title">Core Focus</h3>
         <p>Internal audit is not one of the things we do. It is the only thing we do. No tax. No statutory audit. No distractions. Only focused people make a real difference — and our focus is singular and unambiguous. Every engagement is led and delivered by a senior partner — not handed to a junior team after the proposal is signed. The experience you are promised is the experience you receive.</p>
       </div>
 
-      <div className="diff__card">
+      <div className="diff__card" data-ghost="04">
         <div className="diff__card-num">04</div>
         <h3 className="diff__card-title">The Truth. Always.</h3>
         <p>We tell you what you need to hear. Not what is comfortable. Not what is easy. The most valuable thing we give any board or business owner is clarity — honest, independent, and actionable. And the confidence to act on it.</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+{/*  ════════════ INDUSTRIES STRIP ════════════  */}
+<section className="industries" aria-label="Industries we know">
+  <div className="wrap">
+    <div className="industries__label">Industries we have lived inside — not just audited</div>
+    <div className="industries__chips">
+      {['Telecommunications','FMCG','Automotive','Pharmaceuticals','Oil & Gas','Shipbuilding','Manufacturing','Financial Services','Capital-Intensive Industries'].map(ind => (
+        <span key={ind} className="industries__chip">{ind}</span>
+      ))}
     </div>
   </div>
 </section>
@@ -546,6 +623,16 @@ export default function Home() {
   </div>
 </section>
 
+{/*  ════════════ MANIFESTO ════════════  */}
+<section className="manifesto" aria-label="Our conviction">
+  <div className="wrap">
+    <p className="manifesto__line">
+      We do not audit to comply.<br/>
+      <em>We audit to improve.</em>
+    </p>
+  </div>
+</section>
+
 {/*  ════════════ TEAM ════════════  */}
 <section className="team" id="team">
   <div className="wrap">
@@ -557,7 +644,7 @@ export default function Home() {
     {/*  Founder  */}
     <div className="founder-card">
       <div className="founder-card__photo-wrap">
-        <img src="team-sumit.jpg" alt="Sumit Chuttar" className="founder-card__photo" />
+        <img src="team-sumit.jpg" alt="Sumit Chuttar" className="founder-card__photo" width="280" height="350" loading="lazy" decoding="async" />
       </div>
       <div className="founder-card__content">
         <div className="founder-card__label">Founder</div>
@@ -574,14 +661,14 @@ export default function Home() {
     {/*  Partners  */}
     <div className="team__roster team__roster--partners">
       <div className="team__person">
-        <img src="team-anand.jpg" alt="Anandkumar" className="team__photo" />
+        <img src="team-anand.jpg" alt="Anandkumar" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Anandkumar</div>
         <div className="team__prole">Partner</div>
         <p className="team__pbio">CVA (USA) and FCA (India) with 20+ years across business valuation, M&amp;A advisory, and corporate structuring. Has advised 1,000+ companies on valuation, fundraising, acquisitions, and exits across UAE, India, and Africa.</p>
       </div>
 
       <div className="team__person">
-        <img src="team-manjula.jpg" alt="Manjula Nair" className="team__photo" />
+        <img src="team-manjula.jpg" alt="Manjula Nair" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Manjula Nair</div>
         <div className="team__prole">Partner</div>
         <p className="team__pbio">Marketing and strategy leader who began her career with Ogilvy &amp; Mather. Specialises in corporate sales strategy and marketing plans — aligning them with business goals to drive measurable results.</p>
@@ -591,32 +678,32 @@ export default function Home() {
     {/*  Team  */}
     <div className="team__roster team__roster--small">
       <div className="team__person">
-        <img src="team-aman.jpg" alt="Aman Kabra" className="team__photo" />
+        <img src="team-aman.jpg" alt="Aman Kabra" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Aman Kabra</div>
         <p className="team__pbio">Fifteen years of experience across internal audit and risk advisory. Deep expertise in enterprise risk, operational audits, and regulatory compliance frameworks.</p>
       </div>
 
       <div className="team__person">
-        <img src="team-monika.jpg" alt="Monika Gupta" className="team__photo" />
+        <img src="team-monika.jpg" alt="Monika Gupta" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Monika Gupta</div>
         <p className="team__pbio">Seventeen years across financial assurance, SOX compliance, and internal controls. Has led ICFR reviews for listed companies and advised Audit Committees directly.</p>
       </div>
 
       <div className="team__person">
-        <img src="team-ramji.jpg" alt="Ramji Subramanian" className="team__photo" />
+        <img src="team-ramji.jpg" alt="Ramji Subramanian" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Ramji Subramanian</div>
         <p className="team__pbio">Extensive experience across enterprise risk, internal controls, and governance frameworks. Brings cross-industry insight and senior-level advisory expertise to every engagement.</p>
       </div>
 
       <div className="team__person">
-        <img src="team-kanish.jpg" alt="Kanish Kabra" className="team__photo" />
+        <img src="team-kanish.jpg" alt="Kanish Kabra" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Kanish Kabra</div>
         <div className="team__prole">Senior Manager</div>
         <p className="team__pbio">Specialist in technology audits, cyber risk, and AI governance. Brings deep domain knowledge across IT general controls and digital risk posture reviews.</p>
       </div>
 
       <div className="team__person">
-        <img src="team-ajeet.jpg" alt="Ajeet Verma" className="team__photo" />
+        <img src="team-ajeet.jpg" alt="Ajeet Verma" className="team__photo" width="200" height="200" loading="lazy" decoding="async" />
         <div className="team__pname">Ajeet Verma</div>
         <div className="team__prole">Analyst</div>
       </div>
@@ -671,6 +758,36 @@ export default function Home() {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+{/*  ════════════ FAQ ════════════  */}
+<section className="faq" id="faq">
+  <div className="wrap">
+    <div className="section-label">Common Questions</div>
+    <h2 className="faq__title">Before you reach out,<br/>you may be wondering.</h2>
+    <div className="faq__list">
+      <details className="faq__item">
+        <summary className="faq__q">Do you also provide tax or statutory audit services?<span className="faq__chevron" aria-hidden="true"></span></summary>
+        <p className="faq__a">No. Internal audit is not one of the things we do — it is the only thing we do. No tax, no statutory audit, no distractions. Our focus is singular: protecting and enhancing shareholder value through internal audit, risk advisory, and good governance.</p>
+      </details>
+      <details className="faq__item">
+        <summary className="faq__q">Who actually works on my engagement?<span className="faq__chevron" aria-hidden="true"></span></summary>
+        <p className="faq__a">Senior professionals — every time. Every engagement is led and delivered by a partner, not handed to a junior team after the proposal is signed. The experience you are promised is the experience you receive.</p>
+      </details>
+      <details className="faq__item">
+        <summary className="faq__q">How does an engagement begin?<span className="faq__chevron" aria-hidden="true"></span></summary>
+        <p className="faq__a">With understanding, not auditing. We study your business deeply first — your products, customers, five years of financials benchmarked against industry, your organisation structure and decision-making patterns. Only once we know the business like owners do we plan the audit.</p>
+      </details>
+      <details className="faq__item">
+        <summary className="faq__q">We already have an internal audit team. Can you still add value?<span className="faq__chevron" aria-hidden="true"></span></summary>
+        <p className="faq__a">Yes — two ways. Through co-sourcing, we embed experienced AiR professionals alongside your team to bring specialist expertise or additional capacity. Or through an IA Effectiveness Review, we independently assess whether your existing function is truly delivering value.</p>
+      </details>
+      <details className="faq__item">
+        <summary className="faq__q">Can you handle sensitive situations like suspected fraud?<span className="faq__chevron" aria-hidden="true"></span></summary>
+        <p className="faq__a">Yes. When something does not add up, our forensic reviews investigate suspected fraud, financial irregularities, unexplained losses, and control failures — fact-based, confidential, and designed to give boards and owners the clarity to act decisively.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -848,8 +965,16 @@ export default function Home() {
         <a href="/disclaimer">Disclaimer</a>
       </nav>
     </div>
+    <div className="footer__sign" aria-hidden="true">Audit It Right</div>
   </div>
 </footer>
+<button
+  className="back-to-top"
+  aria-label="Back to top"
+  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+>
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
+</button>
 <div className="float-cta" id="float-cta">
   <a href="https://wa.me/917620813847" target="_blank" rel="noopener noreferrer">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
