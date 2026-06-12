@@ -2071,65 +2071,6 @@ h1, h2, h3 { text-wrap: balance; }
   padding-bottom: 6px;
 }
 
-/* ─── METHODOLOGY STAIRCASE — the signature ─────────
-   The copy promises "we begin at the top and work our
-   way down." The layout now does exactly that: eight
-   domains descend step by step, joined by a ladder of
-   connectors. Structure encoding meaning. ─────────── */
-@media (min-width: 981px) {
-  .methodology__domains {
-    display: flex; flex-direction: column;
-    background: transparent; border: none;
-    border-radius: 0; overflow: visible;
-    gap: 10px;
-  }
-  .methodology__domain {
-    position: relative;
-    width: min(480px, 55%);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 6px;
-    background: rgba(255,255,255,.03);
-    padding: 18px 22px;
-  }
-  .methodology__domain:nth-child(1) { margin-left: 0; }
-  .methodology__domain:nth-child(2) { margin-left: calc(1 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(3) { margin-left: calc(2 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(4) { margin-left: calc(3 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(5) { margin-left: calc(4 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(6) { margin-left: calc(5 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(7) { margin-left: calc(6 * clamp(28px, 4vw, 56px)); }
-  .methodology__domain:nth-child(8) { margin-left: calc(7 * clamp(28px, 4vw, 56px)); }
-  /* step connector: drop + step-in to the next domain */
-  .methodology__domain:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 20px; top: 100%;
-    width: clamp(28px, 4vw, 56px); height: 11px;
-    border-left: 1px solid rgba(255,255,255,.25);
-    border-bottom: 1px solid rgba(255,255,255,.25);
-    border-bottom-left-radius: 4px;
-    pointer-events: none;
-  }
-  .methodology__domain:hover {
-    background: rgba(255,255,255,.08);
-    border-color: rgba(184,150,46,.45);
-    transform: translateX(6px);
-  }
-  /* top + bottom annotations of the descent */
-  .methodology__domains::before {
-    content: 'WHERE VALUE IS CREATED';
-    display: block;
-    font-size: 10px; font-weight: 700; letter-spacing: .22em;
-    color: var(--gold); margin-bottom: 4px;
-  }
-  .methodology__domains::after {
-    content: 'WHERE VALUE IS PROTECTED';
-    display: block; align-self: flex-end;
-    font-size: 10px; font-weight: 700; letter-spacing: .22em;
-    color: var(--gold); margin-top: 4px;
-  }
-}
-
 /* ─── MANIFESTO BAND ─────────────────────────────── */
 .manifesto {
   background:
@@ -2284,31 +2225,6 @@ h1, h2, h3 { text-wrap: balance; }
 /* Scroll progress bar — brand gradient */
 #scroll-bar { background: linear-gradient(90deg, var(--red), var(--gold)); }
 
-/* Contact left column anchors while the form scrolls */
-@media (min-width: 1025px) {
-  .contact__left > div:first-child { position: sticky; top: 110px; }
-}
-
-/* Footer — giant serif sign-off */
-.footer { position: relative; overflow: hidden; }
-.footer__sign {
-  font-family: var(--serif);
-  font-weight: 900;
-  font-size: clamp(56px, 11vw, 160px);
-  line-height: .8;
-  letter-spacing: -.02em;
-  text-align: center;
-  margin-top: clamp(24px, 4vw, 48px);
-  margin-bottom: -0.18em;          /* bleed off the bottom edge */
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,.09);
-  user-select: none; pointer-events: none;
-  white-space: nowrap;
-}
-@supports not (-webkit-text-stroke: 1px black) {
-  .footer__sign { color: rgba(255,255,255,.04); }
-}
-
 /* ─── TOUCH-DEVICE CORRECTNESS ───────────────────────
    Hover-revealed states must not strand touch users. */
 @media (hover: none) {
@@ -2333,28 +2249,6 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* ─── ≤900px ─────────────────────────────────────── */
 @media (max-width: 900px) {
-  /* Methodology (staircase is desktop-only) — give the
-     stacked list a gold descent rail so the top-down
-     story survives on mobile */
-  .methodology__domains {
-    background: transparent; border: none; gap: 8px;
-    border-radius: 0; overflow: visible;
-    position: relative;
-    padding-left: 18px;
-  }
-  .methodology__domains::before {
-    content: '';
-    position: absolute; left: 4px; top: 8px; bottom: 8px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--gold), var(--red));
-    border-radius: 1px;
-  }
-  .methodology__domain {
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 6px;
-    background: rgba(255,255,255,.03);
-  }
-
   /* Manifesto breathes less on small screens */
   .manifesto { padding: clamp(56px, 12vw, 90px) 0; }
 }
@@ -2429,9 +2323,6 @@ h1, h2, h3 { text-wrap: balance; }
   /* Manifesto */
   .manifesto__line { font-size: clamp(26px, 7.5vw, 40px); line-height: 1.3; }
 
-  /* Footer sign-off scales down gracefully */
-  .footer__sign { font-size: clamp(44px, 13vw, 80px); }
-
   /* Floating controls respect notched devices */
   .float-cta { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
   .back-to-top {
@@ -2472,8 +2363,6 @@ h1, h2, h3 { text-wrap: balance; }
   .phases__items { padding-left: 18px; }
   .phase-card::after { left: -18px; }
 
-  .footer__sign { font-size: clamp(36px, 14vw, 56px); -webkit-text-stroke-width: .5px; }
-
   .industries__label { font-size: 10px; }
 
   .about, .values, .diff, .methodology, .phases,
@@ -2492,3 +2381,67 @@ h1, h2, h3 { text-wrap: balance; }
   .btn-hero-primary:active, .submit-btn:active,
   .industries__chip:active, .faq__q:active { transform: none; }
 }
+
+
+/* ════════════════════════════════════════════════════
+   FIX LAYER v5 — screenshot corrections
+   ════════════════════════════════════════════════════ */
+
+/* 1. Anchor jumps no longer hide headings behind the
+      fixed nav — every in-page target lands clear of it */
+section[id], [id="home"] { scroll-margin-top: 96px; }
+@media (max-width: 768px) {
+  section[id] { scroll-margin-top: 80px; }
+}
+
+/* 2. Contact left column — remove the giant dead gap.
+      Intro and details flow naturally with one clean gap. */
+.contact__left {
+  justify-content: flex-start;
+  gap: clamp(28px, 4vw, 44px);
+}
+.contact__left p { margin-bottom: 0; }
+.contact__details { margin-top: auto; }   /* details settle low only when space allows */
+@media (max-width: 1024px) {
+  .contact__details { margin-top: 0; }
+}
+
+/* 3. Consent label — defeat the uppercase inherited from
+      .field label (specificity fix) */
+.field label.consent-label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  display: flex;
+}
+
+/* 4. Methodology — restored grid, quiet polish only */
+.methodology__domain:hover {
+  background: rgba(255,255,255,.06);
+  transform: none;
+}
+.methodology__domain {
+  position: relative;
+}
+.methodology__domain::after {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--gold);
+  transform: scaleY(0);
+  transition: transform .3s var(--bounce);
+}
+.methodology__domain:hover::after { transform: scaleY(1); }
+@media (hover: none) {
+  .methodology__domain::after { display: none; }
+}
+
+/* 5. Hero top-of-page — when at the very top, nothing
+      should peek behind the transparent nav awkwardly */
+.hero { padding-top: 110px; }
+@media (max-width: 768px) { .hero { padding-top: 84px; } }
+
+/* 6. Footer watermark stays behind columns, never over text */
+.footer__watermark { z-index: 0; opacity: .5; }
+.footer .wrap { position: relative; z-index: 1; }

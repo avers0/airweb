@@ -965,7 +965,6 @@ export default function Home() {
         <a href="/disclaimer">Disclaimer</a>
       </nav>
     </div>
-    <div className="footer__sign" aria-hidden="true">Audit It Right</div>
   </div>
 </footer>
 <button
