@@ -219,12 +219,13 @@ h1, h2, h3 { text-wrap: balance; }
 
 .nav__cta,
 .nav__links a.nav__cta {
+  display: inline-flex; align-items: center; justify-content: center;
   font-size: 11.5px; font-weight: 600; letter-spacing: .04em;
   color: var(--white); background: var(--gold);
-  padding: 10px 20px; border-radius: 6px;
+  padding: 11px 20px; border-radius: 6px;
   transition: all var(--ease); border: none;
   position: relative; overflow: hidden; isolation: isolate;
-  white-space: nowrap; line-height: 1;
+  white-space: nowrap; line-height: 1; vertical-align: middle;
 }
 .nav__links a.nav__cta::after { display: none; }
 .nav__cta:hover {
