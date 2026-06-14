@@ -217,13 +217,16 @@ h1, h2, h3 { text-wrap: balance; }
 .nav.on .nav__links a.nav-active::after { width: 100%; }
 .nav.on .nav__links a.nav-active { color: var(--navy) !important; font-weight: 600; }
 
-.nav__cta {
-  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+.nav__cta,
+.nav__links a.nav__cta {
+  font-size: 11.5px; font-weight: 600; letter-spacing: .04em;
   color: var(--white); background: var(--gold);
-  padding: 9px 16px; border-radius: 6px;
+  padding: 10px 20px; border-radius: 6px;
   transition: all var(--ease); border: none;
   position: relative; overflow: hidden; isolation: isolate;
+  white-space: nowrap; line-height: 1;
 }
+.nav__links a.nav__cta::after { display: none; }
 .nav__cta:hover {
   background: var(--gold-dark);
   transform: translateY(-1px);
