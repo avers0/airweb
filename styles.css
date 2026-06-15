@@ -362,12 +362,7 @@ h1, h2, h3 { text-wrap: balance; }
   font-weight: 800;
   color: var(--white);
   letter-spacing: -.02em;
-  background-image: linear-gradient(90deg, var(--gold), var(--gold-dark));
-  background-repeat: no-repeat;
-  background-position: 0 96%;
-  background-size: 0% 5px;
-  animation: rise .9s var(--bounce) .3s both, underline-draw .9s var(--bounce) 1.5s forwards;
-  padding-bottom: 6px;
+  animation: rise .9s var(--bounce) .3s both;
 }
 .hero__amp {
   font-family: "Baskerville", "Georgia", serif;
@@ -388,8 +383,9 @@ h1, h2, h3 { text-wrap: balance; }
 .hero__watermark { display: none; }
 
 .hero__rule {
-  border: none; height: 2px; max-width: 600px; margin-bottom: 8px;
-  background: linear-gradient(90deg, var(--gold) 0%, rgba(255,255,255,.15) 35%, rgba(255,255,255,.08) 100%);
+  border: none; border-top: 2px solid rgba(255,255,255,.15);
+  height: 0; max-width: 600px; margin-bottom: 8px;
+  background: none;
   animation: rise .5s ease .5s both;
 }
 
@@ -582,7 +578,7 @@ h1, h2, h3 { text-wrap: balance; }
   font-size: 3.4em; font-weight: 700;
   float: left; line-height: .85;
   padding: 4px 10px 0 0;
-  color: var(--red);
+  color: inherit;
 }
 .about__sidebar {
   background: var(--off-white);
@@ -1323,7 +1319,7 @@ h1, h2, h3 { text-wrap: balance; }
   color: var(--navy); margin-bottom: 12px; line-height: 1.25;
 }
 .contact__left p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 0; max-width: 400px; }
-.contact__details { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); margin-top: auto; }
+.contact__details { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); margin-top: 4px; }
 .contact__detail {
   display: grid; grid-template-columns: clamp(72px, 8vw, 90px) 1fr;
   gap: 16px; padding: 18px 0;
